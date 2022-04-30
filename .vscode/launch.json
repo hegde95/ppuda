@@ -52,5 +52,17 @@
                 "--name", "ghn2",
             ]
         },
+        {
+            "name": "Eval MLP GGNN",
+            "type": "python",
+            "request": "launch",
+            "justMyCode": false,
+            "module": "experiments.eval_mlp_ghn",
+            "args": [
+                "--ckpt", "./checkpoints/ghn.pt", 
+                "-d", "cifar10", 
+                "--split", "split",
+            ]
+        },        
     ]
 }
