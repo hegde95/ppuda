@@ -11,7 +11,7 @@
             "justMyCode": false,
             "module": "experiments.mlp_net_generator",
             "args": [
-                "train", "10",  "./data",
+                "train", "20",  "./data",
             ]
         },
         {
@@ -30,6 +30,20 @@
             "request": "launch",
             "justMyCode": false,
             "module": "experiments.train_ghn",
+            "args": [
+                "-m", "8", 
+                "-n", 
+                "-v", "50", 
+                "--ln", 
+                "--name", "ghn2",
+            ]
+        },
+        {
+            "name": "Train MLP GGNN",
+            "type": "python",
+            "request": "launch",
+            "justMyCode": false,
+            "module": "experiments.train_mlp_ghn",
             "args": [
                 "-m", "8", 
                 "-n", 

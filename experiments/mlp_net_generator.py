@@ -90,7 +90,7 @@ def main():
             net_args = {
                         'fc_layers': int(np.random.randint(1, 3)),  # number of fully connected layers before classification                        
                         'fc_dim': 256,
-                        'inp_dim': 26,
+                        'inp_dim': 17,
                         'out_dim': 6,
                         }
 
