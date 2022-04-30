@@ -324,6 +324,32 @@ class Network(nn.Module):
         return logits, logits_aux
 
 
+class MlpNetwork(nn.Module):
+
+    def __init__(self,
+                 fc_layers=0,
+                 fc_dim=0,
+                 inp_dim = 0,
+                 out_dim = 0,
+                 ):
+        super(MlpNetwork, self).__init__()
+
+        self.expected_input_sz = inp_dim
+        fc = [nn.Linear(inp_dim, fc_dim if fc_layers > 1 else out_dim)]
+        for i in range(fc_layers - 1):
+            assert fc_dim > 0, fc_dim
+            fc.append(nn.ReLU(inplace=True))
+            # fc.append(nn.Dropout(p=0.5, inplace=False))
+            fc.append(nn.Linear(in_features=fc_dim, out_features=fc_dim if i < fc_layers - 2 else out_dim))
+        self.classifier = nn.Sequential(*fc)
+
+
+    def forward(self, input):
+
+        out = self.classifier(input)
+
+        return out
+
 """
 Helper functions to train GHNs and work with DeepNets-1M.
 """
